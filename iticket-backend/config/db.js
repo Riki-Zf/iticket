@@ -6,7 +6,7 @@ const connectDB = async (mongoUri) => {
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error("MongoDB connection error:", error.message);
-    process.exit(1);
+    // ❌ Jangan exit(1) karena serverless tidak boleh berhenti
   }
 };
 
