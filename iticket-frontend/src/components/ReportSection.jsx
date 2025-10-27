@@ -5,10 +5,23 @@ export default function ReportSection({ tickets }) {
   const countStatus = (s) => tickets.filter((t) => t.status === s).length;
   const countCategory = (c) => tickets.filter((t) => t.category === c).length;
 
+  // 🕒 Tambahkan tanggal dan waktu realtime
+  const date = new Date().toLocaleString("id-ID", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   const textReport = `
 📊 Laporan Tiket IT Support
+Tanggal: ${date}
+
 Total Tiket: ${total}
 Open: ${countStatus("Open")} | Pending: ${countStatus("Pending")} | Completed: ${countStatus("Completed")}
+
 Kategori:
 - Internet: ${countCategory("Internet")}
 - Aplikasi: ${countCategory("Aplikasi")}
